@@ -1,0 +1,21 @@
+.github/workflows/dashboard-summary.yml
+  s_e9508a1ab58572::t_1702e062897807 1-34
+README.md
+  s_e9508a1ab58572::t_4f515058e52052 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "178c8f3a6038043b291e3d8b615b2631afb2a2b6",
+  "prompts": {},
+  "sessions": {
+    "s_e9508a1ab58572": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ff02a811-586c-4a20-a727-6f2ce26060d7",
+        "model": "claude-haiku-4-5-20251001"
+      },
+      "human_author": "Claude Code <noreply@anthropic.com>"
+    }
+  }
+}
