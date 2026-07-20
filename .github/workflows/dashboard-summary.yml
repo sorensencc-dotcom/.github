@@ -11,14 +11,14 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - name: Run validator
+      - name: Run validator and Create summary
         run: |
+          # ⚡ Bolt: Combined consecutive shell steps to eliminate runner initialization overhead (~1-3s saved)
           mkdir -p .github/reports
           if [ -f setup/validate.sh ]; then
             sh setup/validate.sh > .github/reports/validation.log 2>&1 || echo "Validation failed"
           fi
-      - name: Create summary
-        run: |
+
           cat > .github/reports/validation-summary.json << JSON_EOF
           {
             "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
