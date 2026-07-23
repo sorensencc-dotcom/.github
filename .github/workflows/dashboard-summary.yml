@@ -11,14 +11,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-      - name: Run validator
+      - name: Run validator and create summary
         run: |
           mkdir -p .github/reports
           if [ -f setup/validate.sh ]; then
             sh setup/validate.sh > .github/reports/validation.log 2>&1 || echo "Validation failed"
           fi
-      - name: Create summary
-        run: |
           cat > .github/reports/validation-summary.json << JSON_EOF
           {
             "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
@@ -32,3 +30,4 @@ jobs:
         with:
           name: validation-summary
           path: .github/reports/
+          retention-days: 7

@@ -1,0 +1,3 @@
+## 2026-07-23 - GitHub Actions Performance and Storage Optimization
+**Learning:** GitHub Actions has an overhead of 1-3 seconds per step. Combining multiple shell commands into a single `run` step can reduce workflow execution time. Additionally, the default artifact retention period is 90 days, which can waste storage space.
+**Action:** Combine shell commands into single steps where possible. Always set `retention-days` on `actions/upload-artifact` to a lower, appropriate value (like 7 days) to save storage space.
