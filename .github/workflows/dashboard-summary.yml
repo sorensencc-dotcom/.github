@@ -18,10 +18,12 @@ jobs:
             sh setup/validate.sh > .github/reports/validation.log 2>&1 || echo "Validation failed"
           fi
       - name: Create summary
+        env:
+          REPO: ${{ github.repository }}
         run: |
           jq -n \
             --arg timestamp "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
-            --arg repository "${{ github.repository }}" \
+            --arg repository "$REPO" \
             --arg workflow "dashboard" \
             --arg status "complete" \
             '{
