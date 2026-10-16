@@ -26,7 +26,12 @@ jobs:
             --arg repository "$REPO" \
             --arg workflow "dashboard" \
             --arg status "complete" \
-            '{timestamp: $timestamp, repository: $repository, workflow: $workflow, status: $status}' > .github/reports/validation-summary.json
+            '{
+              timestamp: $timestamp,
+              repository: $repository,
+              workflow: $workflow,
+              status: $status
+            }' > .github/reports/validation-summary.json
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
