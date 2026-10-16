@@ -19,14 +19,17 @@ jobs:
           fi
       - name: Create summary
         run: |
-          cat > .github/reports/validation-summary.json << JSON_EOF
-          {
-            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-            "repository": "${{ github.repository }}",
-            "workflow": "dashboard",
-            "status": "complete"
-          }
-          JSON_EOF
+          jq -n \
+            --arg timestamp "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --arg repository "${{ github.repository }}" \
+            --arg workflow "dashboard" \
+            --arg status "complete" \
+            '{
+              timestamp: $timestamp,
+              repository: $repository,
+              workflow: $workflow,
+              status: $status
+            }' > .github/reports/validation-summary.json
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
